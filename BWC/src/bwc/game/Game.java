@@ -36,7 +36,19 @@ public class Game {
 		} else {
 			getPlayer(playerIndex).giveCard(getCurrentPlayer().drawCard(cardIndex));
 		}
+		switchPlayerWithTurnCheck();
+		
+	}
+	
+	private void switchPlayerWithTurnCheck() {
 		switchPlayer();	
+		checkTurn();
+	}
+	
+	private void checkTurn() {
+		while (getCurrentPlayer().loseTurn()) {
+			switchPlayer();
+		}
 	}
 	
 	private Player getCurrentPlayer() {

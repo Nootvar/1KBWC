@@ -7,6 +7,7 @@ import bwc.cards.Card;
 import bwc.cards.DivisiveCard;
 import bwc.cards.MultiplicativeCard;
 import bwc.cards.PointCard;
+import bwc.cards.TurnCard;
 
 public class AffectedDeck {
 
@@ -38,6 +39,18 @@ public class AffectedDeck {
 		points = (points*multiplier)/divisor;
 		
 		return points;
+	}
+	
+	public boolean loseTurn() {
+		for (Card card : cards) {
+			if (card instanceof TurnCard) {
+				if (((TurnCard) card).addAffected()) {
+					cards.remove(card);
+				}
+				return true;
+			}
+		}
+		return false;
 	}
 	
 }

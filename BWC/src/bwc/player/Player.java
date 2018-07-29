@@ -40,4 +40,8 @@ public class Player {
 		affected.addCrad(card);
 	}
 	
+	public boolean loseTurn() {
+		return affected.loseTurn();
+	}
+	
 }
