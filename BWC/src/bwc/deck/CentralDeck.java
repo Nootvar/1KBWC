@@ -24,7 +24,7 @@ public class CentralDeck {
 	}
 	
 	public int getMultiplier() {
-		int multiplier = 0;
+		int multiplier = 1;
 		for (Card card : cards) {
 			if (card instanceof MultiplicativeCard) {
 				multiplier *= ((MultiplicativeCard) card).getMultiplier();
@@ -34,7 +34,7 @@ public class CentralDeck {
 	}
 
 	public int getDivisor() {
-		int divisor = 0;
+		int divisor = 1;
 		for (Card card : cards) {
 			if (card instanceof DivisiveCard) {
 				divisor *= ((DivisiveCard) card).getDivisor();

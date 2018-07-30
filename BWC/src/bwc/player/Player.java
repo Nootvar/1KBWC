@@ -8,8 +8,8 @@ import bwc.deck.PlayerHand;
 public class Player {
 
 	private String name;
-	private PlayerHand hand;
-	private AffectedDeck affected;
+	private PlayerHand hand = new PlayerHand();
+	private AffectedDeck affected = new AffectedDeck();
 	
 	public Player(String name) {
 		this.name = name;
@@ -23,9 +23,8 @@ public class Player {
 		return affected.getPoints(centralDeck);
 	}
 	
-	@Override
-	public String toString() {
-		return String.format("%s - Points : %d", name);
+	public String toString(CentralDeck centralDeck) {
+		return String.format("%s - Points : %d", name, getPoints(centralDeck));
 	}
 
 	public String getHand() {
@@ -42,6 +41,10 @@ public class Player {
 	
 	public boolean loseTurn() {
 		return affected.loseTurn();
+	}
+	
+	public void getCard(Card card) {
+		hand.addCrad(card);
 	}
 	
 }

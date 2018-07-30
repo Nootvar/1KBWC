@@ -22,7 +22,7 @@ public class PlayerHand {
 	public String getCardsList() {
 		String list = "";
 		for (int i = 0; i < cards.size(); i++) {
-			list += i + ". " + cards.get(i).toString();
+			list += i + ". " + cards.get(i).toString() + "\n";
 		}
 		return list;
 	}

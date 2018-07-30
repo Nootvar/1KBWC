@@ -22,7 +22,7 @@ public abstract class Card implements CardI {
 	
 	@Override
 	public String toString() {
-		return String.format("%s/n%s", name, description);
+		return String.format("%s : %s", name, description);
 	}
 	
 }

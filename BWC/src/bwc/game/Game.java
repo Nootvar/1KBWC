@@ -7,14 +7,14 @@ import bwc.player.Player;
 public class Game {
 
 	private Player[] players;
-	private Deck deck;
-	private CentralDeck centralDeck;
+	private Deck deck = new Deck();
+	private CentralDeck centralDeck = new CentralDeck();
 	
 	private int currentPlayerIndex;
 	
 	public Game(Player...players) {
 		this.players = players;
-		this.deck = new Deck();
+		drawInitialCards();
 	}
 	
 	public String getPlayerName(int playerIndex) {
@@ -37,6 +37,7 @@ public class Game {
 			getPlayer(playerIndex).giveCard(getCurrentPlayer().drawCard(cardIndex));
 		}
 		switchPlayerWithTurnCheck();
+		getCurrentPlayer().getCard(deck.drawCard());
 		
 	}
 	
@@ -69,6 +70,27 @@ public class Game {
 
 	public boolean isEnded() {
 		return deck.isEmpty();
+	}
+	
+	private void drawInitialCards() {
+		for (Player player : players) {
+			for (int i = 0; i < 3; i++) {
+				player.getCard(deck.drawCard());
+			}
+		}
+		players[0].getCard(deck.drawCard());
+	}
+	
+	public String getPlayerList() {
+		String list = "";
+		for (int i = 0; i < players.length; i++) {
+			list += i + ". " + players[i].toString(centralDeck) + "\n";
+		}
+		return list;
+	}
+
+	public String getCurrentPlayerName() {
+		return getCurrentPlayer().getName();
 	}
 	
 }
