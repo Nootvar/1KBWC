@@ -27,7 +27,8 @@ public class BWC {
 		} while (!game.isEnded());
 		
 		System.out.println("Jeux terminé");
-		
+		System.out.println("Résultat :");
+		System.out.println(game.getPlayerList());
 		
 	}
 	

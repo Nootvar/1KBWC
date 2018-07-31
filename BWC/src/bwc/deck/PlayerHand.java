@@ -27,4 +27,8 @@ public class PlayerHand {
 		return list;
 	}
 	
+	public boolean isEmpty() {
+		return cards.size() == 0;
+	}
+	
 }

@@ -37,7 +37,9 @@ public class Game {
 			getPlayer(playerIndex).giveCard(getCurrentPlayer().drawCard(cardIndex));
 		}
 		switchPlayerWithTurnCheck();
-		getCurrentPlayer().getCard(deck.drawCard());
+		if (!deck.isEmpty()) {
+			getCurrentPlayer().getCard(deck.drawCard());
+		}
 		
 	}
 	
@@ -47,7 +49,7 @@ public class Game {
 	}
 	
 	private void checkTurn() {
-		while (getCurrentPlayer().loseTurn()) {
+		while ((getCurrentPlayer().loseTurn() || getCurrentPlayer().isHandEmpty()) && isEnded()) {
 			switchPlayer();
 		}
 	}
@@ -69,7 +71,7 @@ public class Game {
 	}
 
 	public boolean isEnded() {
-		return deck.isEmpty();
+		return deck.isEmpty() && playersOutOfCards();
 	}
 	
 	private void drawInitialCards() {
@@ -91,6 +93,15 @@ public class Game {
 
 	public String getCurrentPlayerName() {
 		return getCurrentPlayer().getName();
+	}
+	
+	private boolean playersOutOfCards() {
+		for (Player player : players) {
+			if (!player.isHandEmpty()) {
+				return false;
+			}
+		}
+		return true;
 	}
 	
 }

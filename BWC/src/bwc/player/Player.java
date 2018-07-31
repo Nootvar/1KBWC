@@ -47,4 +47,8 @@ public class Player {
 		hand.addCrad(card);
 	}
 	
+	public boolean isHandEmpty() {
+		return hand.isEmpty();
+	}
+	
 }
